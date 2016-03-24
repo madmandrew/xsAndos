@@ -1,0 +1,104 @@
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="gameStyle.css">
+        <script src="jsObjects/tabObject.js"></script>
+    </head>
+    <body>
+
+        <div class="gameBox">
+            <div class="tabBar">
+                <div class="tab3" id="atkTab"><span class="tabText">Attack</span></div>
+                <div class="tab3" id="upgTab"><span class="tabText">Upgrade</span></div>
+                <div class="lastTab3 Tab3" id="oTab"><span class="tabText">O's</span></div>
+                <!--<div class="tab4"></div>-->
+            </div>
+            <div class="gameContent">
+                <div id="atkPage" style="display:none">
+                    <div id="firstX" class="commonRow">
+                        <div class="attackLabel">
+                            <span class="attackInnerLabel">X-1</span>
+                        </div>
+
+                        <div class="enemyHealth">
+                            <div class="enemyInnerHealth"></div>
+                        </div>
+
+                        <div class="atkButtonContainer">
+                            <button type="button" class="atkButton">Atk</button>
+                        </div>
+                    </div>
+
+                    <div id="secondX" class="commonRow">
+                        <div class="attackLabel">
+                            <span class="attackInnerLabel">X-2</span>
+                        </div>
+
+                        <div class="enemyHealth">
+                            <div class="enemyInnerHealth"></div>
+                        </div>
+
+                        <div class="atkButtonContainer">
+                            <button type="button" class="atkButton">Atk</button>
+                        </div>
+                    </div>
+
+                    <div id="thirdX" class="commonRow">
+                        <div class="attackLabel">
+                            <span class="attackInnerLabel">X-3</span>
+                        </div>
+
+                        <div class="enemyHealth">
+                            <div class="enemyInnerHealth"></div>
+                        </div>
+
+                        <div class="atkButtonContainer">
+                            <button type="button" class="atkButton">Atk</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="upgPage" style="display:none">
+                    <div class="commonRow">
+                            <button class="upgButton">
+                                <span class="upgButtonLabel">Auto Attack</span>
+                                <span class="upgButtonCost">
+                                    5 x-kills and $20
+                                </span>
+                            </button>
+                    </div>
+                    <div class="commonRow">
+                            <button class="upgButton">
+                                <span class="upgButtonLabel">Attack Speed</span>
+                                <span class="upgButtonCost">
+                                    15 x-kills and $50
+                                </span>
+                            </button>
+                    </div>
+                    <div class="commonRow">
+                            <button class="upgButton">
+                                <span class="upgButtonLabel">Attack Power</span>
+                                <span class="upgButtonCost">
+                                    15 x-kills and $50
+                                </span>
+                            </button>
+                    </div>
+                    <div class="commonRow">
+                            <button class="upgButton">
+                                <span class="upgButtonLabel">x-kill $-value</span>
+                                <span class="upgButtonCost">
+                                    25 x-kills and $100
+                                </span>
+                            </button>
+                    </div>
+                </div>
+
+                <div id="oPage"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var test = new tabObject("atkTab","upgTab","oTab");
+        </script>
+    </body>
+</html>

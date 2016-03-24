@@ -1,0 +1,113 @@
+.gameBox {
+    border-style: solid;
+    border-color: #303F9F;
+    height: 500px; /*TODO make this dynamic*/
+    width: 400px;
+}
+
+.gameContent {
+    height: calc(100% - 50px);
+    width: inherit;
+}
+
+.tabBar {
+    height: 50px;
+    width: 100%;
+}
+
+.tab4 {
+    border-style: solid;
+    border-color: red;
+
+    height: calc(100% - 6px);
+    width: calc(25% - 6px);
+    position: relative;
+    float: left;
+}
+
+.tab3 {
+    border-style: solid;
+    border-color: red;
+
+    text-align: center;
+
+    height: calc(100% - 6px);
+    width: calc(33% - 6px);
+    position: relative;
+    float: left;
+}
+
+/*TODO handle tab4*/
+.tab3:hover {
+    background-color: blue;
+}
+
+.lastTab3 {
+    width: calc(34% - 6px);
+    float: right;
+}
+
+.tabText {
+    line-height: 44px;
+}
+
+.enemyHealth {
+    width:60%;
+    border: 2px solid darkred;
+    border-radius: 10px;
+    height:75%;
+    background-color: lightcoral;
+    float:left;
+}
+.enemyInnerHealth {
+    height:100%;
+    width:50%;
+    border-radius: 7px;
+    background-color:darkred;
+    transition: width .5s linear;
+}
+
+.attackLabel {
+    height: 75%;
+    width: 10%;
+    float: left;
+}
+
+.attackInnerLabel {
+    line-height: 36px;
+}
+
+.commonRow
+{
+    padding: 10px;
+    padding-top: 20px;
+    height: 10%;
+
+/*    background-color: yellow;*/
+}
+
+.atkButtonContainer {
+    width: calc(30% - 8px);
+    height: 75%;
+    float: right;
+    text-align: center;
+    padding: 2px;
+}
+
+.atkButton {
+    height: 100%;
+    width: 75%;
+}
+
+.upgButton {
+    width: 100%;
+    height: 90%;
+}
+
+.upgButtonLabel {
+    float: left;
+}
+
+.upgButtonCost {
+    float: right;
+}
