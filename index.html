@@ -3,6 +3,12 @@
     <head>
         <link rel="stylesheet" type="text/css" href="gameStyle.css">
         <script src="jsObjects/tabObject.js"></script>
+        <script src="jsObjects/atkPageObject.js"></script>
+        <script src="jsObjects/oPageObject.js"></script>
+        <script src="jsObjects/statsObject.js"></script>
+        <script src="jsObjects/oObject.js"></script>
+        <script src="jsObjects/upgPageObject.js"></script>
+
     </head>
     <body>
 
@@ -17,21 +23,23 @@
                 <div id="atkPage" style="display:none">
                     <div id="firstX" class="commonRow">
                         <div class="attackLabel">
-                            <span class="attackInnerLabel">X-1</span>
+                            <span class="attackInnerLabel">x-1</span>
                         </div>
 
                         <div class="enemyHealth">
-                            <div class="enemyInnerHealth"></div>
+                            <div class="enemyInnerHealth" id="firstXBar">
+                                <span class="enemyInnerHealthText" id="firstXBarText">100%</span>
+                            </div>
                         </div>
 
                         <div class="atkButtonContainer">
-                            <button type="button" class="atkButton">Atk</button>
+                            <button type="button" class="atkButton" id="firstXButton">Atk</button>
                         </div>
                     </div>
 
-                    <div id="secondX" class="commonRow">
+                    <div id="secondX" class="commonRow" style="display: none">
                         <div class="attackLabel">
-                            <span class="attackInnerLabel">X-2</span>
+                            <span class="attackInnerLabel">x-2</span>
                         </div>
 
                         <div class="enemyHealth">
@@ -39,13 +47,13 @@
                         </div>
 
                         <div class="atkButtonContainer">
-                            <button type="button" class="atkButton">Atk</button>
+                            <button type="button" class="atkButton" disabled>Atk</button>
                         </div>
                     </div>
 
-                    <div id="thirdX" class="commonRow">
+                    <div id="thirdX" class="commonRow" style="display: none">
                         <div class="attackLabel">
-                            <span class="attackInnerLabel">X-3</span>
+                            <span class="attackInnerLabel">x-3</span>
                         </div>
 
                         <div class="enemyHealth">
@@ -53,52 +61,139 @@
                         </div>
 
                         <div class="atkButtonContainer">
-                            <button type="button" class="atkButton">Atk</button>
+                            <button type="button" class="atkButton" disabled>Atk</button>
+                        </div>
+                    </div>
+                    
+                    <div id="fourthX" class="commonRow" style="display: none">
+                        <div class="attackLabel">
+                            <span class="attackInnerLabel">x-4</span>
+                        </div>
+
+                        <div class="enemyHealth">
+                            <div class="enemyInnerHealth"></div>
+                        </div>
+
+                        <div class="atkButtonContainer">
+                            <button type="button" class="atkButton" disabled>Atk</button>
+                        </div>
+                    </div>
+                    
+                    <div id="fifthX" class="commonRow" style="display: none">
+                        <div class="attackLabel">
+                            <span class="attackInnerLabel">x-5</span>
+                        </div>
+
+                        <div class="enemyHealth">
+                            <div class="enemyInnerHealth"></div>
+                        </div>
+
+                        <div class="atkButtonContainer">
+                            <button type="button" class="atkButton" disabled>Atk</button>
                         </div>
                     </div>
                 </div>
 
                 <div id="upgPage" style="display:none">
                     <div class="commonRow">
-                            <button class="upgButton">
+                            <button class="upgButton" id="atkPowerButton" disabled>
+                                <span class="upgButtonLabel">Attack Power</span>
+                                <span class="upgButtonLevel"></span>
+                                <span class="upgButtonCost">
+                                    5 x-kills and $5
+                                </span>
+                            </button>
+                    </div>
+                    <div class="commonRow">
+                            <button class="upgButton" id="atkSpeedButton" disabled>
+                                <span class="upgButtonLabel">Attack Speed</span>
+                                <span class="upgButtonLevel"></span>
+                                <span class="upgButtonCost">
+                                    10 x-kills and $10
+                                </span>
+                            </button>
+                    </div>
+                    <div class="commonRow">
+                            <button class="upgButton" id="xKillValueButton" disabled>
+                                <span class="upgButtonLabel">x-kill $-value</span>
+                                <span class="upgButtonLevel"></span>
+                                <span class="upgButtonCost">
+                                    15 x-kills and $15
+                                </span>
+                            </button>
+                    </div>
+                    <div class="commonRow">
+                            <button class="upgButton" id="autoAttackButton" disabled>
                                 <span class="upgButtonLabel">Auto Attack</span>
                                 <span class="upgButtonCost">
                                     5 x-kills and $20
                                 </span>
                             </button>
-                    </div>
+                    </div>      
                     <div class="commonRow">
-                            <button class="upgButton">
-                                <span class="upgButtonLabel">Attack Speed</span>
+                            <button class="upgButton" id="newOButton" disabled>
+                                <span class="upgButtonLabel">Add New O</span>
+                                <span class="upgButtonLevel"></span>
                                 <span class="upgButtonCost">
-                                    15 x-kills and $50
-                                </span>
-                            </button>
-                    </div>
-                    <div class="commonRow">
-                            <button class="upgButton">
-                                <span class="upgButtonLabel">Attack Power</span>
-                                <span class="upgButtonCost">
-                                    15 x-kills and $50
-                                </span>
-                            </button>
-                    </div>
-                    <div class="commonRow">
-                            <button class="upgButton">
-                                <span class="upgButtonLabel">x-kill $-value</span>
-                                <span class="upgButtonCost">
-                                    25 x-kills and $100
+                                    100 x-kills and $500
                                 </span>
                             </button>
                     </div>
                 </div>
 
-                <div id="oPage"></div>
+                <div id="oPage" style="display:none">
+                    <canvas id="oCanvas" class="oCanvas">
+                    </canvas>
+                    
+                    <div class="leftColumn">
+                        <button type="button" class="oButtons" id="buyCrown">buy Crown</button>
+                        <button type="button" class="oButtons" id="buyMustache">buy Mustache</button>
+                        <button type="button" class="oButtons" id="buyPet">buy Pet</button>
+                        
+                    </div>
+                    <div class="rightColumn">
+                        <button type="button" class="oButtons" id="buySword">buy Sword</button>
+                        <button type="button" class="oButtons" id="buyShield">buy Shield</button>
+                        <button type="button" class="oButtons" id="buyPetAccessory" disabled>buy Pet Accessory</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="footer" class="footer">
+                <div id="money" style="float:right" class="footerStats">
+                    $ 0
+                </div>
+                <div id="xKills" style="float:left" class="footerStats">
+                    x kills: 0
+                </div>
             </div>
         </div>
 
         <script type="text/javascript">
-            var test = new tabObject("atkTab","upgTab","oTab");
+            var statsObject;
+            var oObject;
+            var upgPage;
+            document.addEventListener("DOMContentLoaded", function(event)
+            {
+                new TabObject("atkTab","upgTab","oTab");
+                
+                //var statsObject = new StatsObject();
+                //var oObject = new O_Object();
+                
+                statsObject = new StatsObject();
+                oObject = new O_Object();
+                
+                var atkPage = new AtkPageObject(statsObject, oObject);
+                
+                var oPage = new oPageObject();
+                upgPage = new UpgradePageObject(statsObject, oObject, atkPage);
+                
+                statsObject.addSubscriber(oPage);
+                statsObject.addSubscriber(upgPage);
+                
+                document.getElementById("upgTab").click();
+            });
+            
         </script>
     </body>
 </html>

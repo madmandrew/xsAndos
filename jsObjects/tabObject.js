@@ -1,4 +1,4 @@
-function tabObject (tab1_id, tab2_id, tab3_id)
+function TabObject (tab1_id, tab2_id, tab3_id)
 {
     //variables
     this.activeTab;
@@ -10,16 +10,12 @@ function tabObject (tab1_id, tab2_id, tab3_id)
     this.tab2_content = tab2_id.replace("Tab", "Page");
     this.tab3_content = tab3_id.replace("Tab", "Page");
 
-
-    //functions
-
     //intitialize
-    createListeners(this);
+    createTabListeners(this);
 }
 
 function changeTab(tabId, tabObject)
 {
-    console.log("change Tab " + tabId);
     document.getElementById(tabObject.tab1_content).style = "display: none";
     document.getElementById(tabObject.tab2_content).style = "display: none";
     document.getElementById(tabObject.tab3_content).style = "display: none";
@@ -27,9 +23,7 @@ function changeTab(tabId, tabObject)
     document.getElementById(tabId.replace("Tab", "Page")).style = "display: block";
 }
 
-
-
-function createListeners(tabObject)
+function createTabListeners(tabObject)
 {
     document.getElementById(tabObject.tab1)
         .addEventListener("click", function ()
