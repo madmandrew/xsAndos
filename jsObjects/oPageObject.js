@@ -72,7 +72,8 @@ function drawCrown()
         ctx.drawImage(img, 55,35, 75, 75);
         ctx.rotate(.5);
     }
-    img.src = "/img/goldCrown.png";
+    //img.src = "/img/goldCrown.png"; doesn't Work online?
+    img.src = "xsAndos/img/goldCrown.png";
 }
 
 function drawMustache()
@@ -84,7 +85,7 @@ function drawMustache()
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 112.25,70, 75.5, 25);
     }
-    img.src = "/img/mustache.png";
+    img.src = "xsAndos/img/mustache.png";
 }
 
 function drawLightsaber()
@@ -96,7 +97,7 @@ function drawLightsaber()
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 40,35, 80, 80);
     }
-    img.src = "/img/lightsaberSmall.png";
+    img.src = "xsAndos/img/lightsaberSmall.png";
 }
 
 function drawShield()
@@ -110,7 +111,7 @@ function drawShield()
         ctx.drawImage(img, 200, -50, 75, 75);
         ctx.rotate(-.5);
     }
-    img.src = "/img/shield.png";
+    img.src = "xsAndos/img/shield.png";
 }
 
 function drawPet()
@@ -122,7 +123,7 @@ function drawPet()
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 20,90, 45, 45);
     }
-    img.src = "/img/pet.gif";
+    img.src = "xsAndos/img/pet.gif";
 }
 function drawPetSunglasses()
 {
@@ -133,5 +134,5 @@ function drawPetSunglasses()
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 34,102, 23.5, 5);
     }
-    img.src = "/img/sunglasses2.png";
+    img.src = "xsAndos/img/sunglasses2.png";
 }
