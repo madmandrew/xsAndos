@@ -38,7 +38,7 @@ function UpgradePageObject(statsObject, oObject, atkPage)
         statsUpdated(this);
     }
     
-    createUpgListeners(this);
+    createUpgListeners(this, atkPage);
     
     this.statsUpdated();
 }
@@ -78,7 +78,7 @@ function statsUpdated(upgObject)
     }   
 }
 
-function createUpgListeners(upgObject)
+function createUpgListeners(upgObject, atkPage)
 {
     //atk power
     document.getElementById("atkPowerButton")
@@ -129,6 +129,7 @@ function createUpgListeners(upgObject)
         
         updateButtonLabel("atkSpeedButton", upg);
         upgObject.statsObject.changeMoney(-cost);
+         atkPage.speedUpgraded();
     });
     
     //x-kill value
@@ -169,7 +170,6 @@ function createUpgListeners(upgObject)
     document.getElementById("newOButton")
         .addEventListener("click", function ()
     {
-        console.log("change attack new O button");
         var upg = upgObject.upgrades["newO"];
         upg.level += 1;
         

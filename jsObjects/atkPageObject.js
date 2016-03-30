@@ -3,46 +3,107 @@ function AtkPageObject(statsObject, oObject)
     this.statsObject = statsObject;
     this.oObject = oObject;
     
-    this.firstX_loop;
-    this.firstX_bar_percent;
+    this.allXs = {
+        "firstX" : {
+            "set" : true,
+            "running": false,
+            "loop" : null,
+            "barPercent" : 100
+        },
+        "secondX" : {
+            "set" : false,
+            "loop" : null,
+            "barPercent" : 100
+        },
+        "thirdX" : {
+            "set" : false,
+            "loop" : null,
+            "barPercent" : 100
+        },
+        "fourthX" : {
+            "set" : false,
+            "loop" : null,
+            "barPercent" : 100
+        },
+        "fifthX" : {
+            "set" : false,
+            "loop" : null,
+            "barPercent" : 100
+        }
+    }
+
+    this.addX = function ()
+    {
+        addX(this);
+    }
     
-    this.addX = addX;
+    this.speedUpgraded = function ()
+    {
+        //console.log("speed has been upgraded, reset intervals");
+        //console.log(1000 / oObject.atkSpeed);
+        for (var id in this.allXs)
+        {
+            if (this.allXs[id].set)
+            {
+                clearInterval(this.allXs[id].loop);
+                atkInterval(this, id);
+            }
+        }
+    }
     
     createAtkListeners(this);
 }
 
 function createAtkListeners(atkPageObject)
 {
-    //initializeX("firstX");   
-    document.getElementById("firstXButton")
-           .addEventListener("click", function ()
+    for (var xId in atkPageObject.allXs)
     {
-        document.getElementById("firstXButton").disabled = true;
-        //start attack loop
-        atkPageObject.firstX_bar_percent = 100;
-        console.log(1000/ atkPageObject.oObject.atkSpeed);
-        atkPageObject.firstX_loop = setInterval(function()
+        (function(xId1)
         {
-           attackLoop(atkPageObject, "firstX");
-        }, 1000 / atkPageObject.oObject.atkSpeed);
+           document.getElementById(xId1 + "Button")
+               .addEventListener("click", function ()
+            {
+                document.getElementById(xId1 + "Button").disabled = true;
 
-        //check
-    });
+                atkPageObject.allXs[xId1].barPercent = 100;
+
+                //start attack loop
+                //console.log(1000/ atkPageObject.oObject.atkSpeed);
+                atkInterval(atkPageObject, xId1);
+            });
+        }(xId)); //calls this immediately to prevent var rewrites..
+    }
 }
 
-function addX()
+function atkInterval(atkPage, id)
 {
-    console.log("addX Here");
+    clearInterval(atkPage.allXs[id].loop);
+    atkPage.allXs[id].loop = setInterval(function()
+                {
+                    attackLoop(atkPage, id);
+                }, 1000 / atkPage.oObject.atkSpeed);
+}
+
+function addX(atkPageObject)
+{
+    for (var xId in atkPageObject.allXs)
+    {
+        if(!atkPageObject.allXs[xId].set)
+        {
+            document.getElementById(xId).style = "display: block";
+            atkPageObject.allXs[xId].set = true;
+            break;
+        }
+    }
 }
 
 function attackLoop(atkPageObject, id)
 {
-    //console.log(atkPageObject[id + "_bar_percent"] - atkPageObject.oObject.atkDamage);
-    if (atkPageObject[id + "_bar_percent"] - atkPageObject.oObject.atkDamage <= 0)
+    if (atkPageObject.allXs[id].barPercent - atkPageObject.oObject.atkDamage <= 0)
     {
         if (!atkPageObject.oObject.autoAttack)
         {  
-            clearInterval(atkPageObject.firstX_loop);
+            clearInterval(atkPageObject.allXs[id].loop);
             document.getElementById(id + "Button").disabled = false;
         }
         else
@@ -55,14 +116,18 @@ function attackLoop(atkPageObject, id)
         
         //atkPageObject.statsObject.changeMoney(atkPageObject.oObject.xValue);
         //atkPageObject.statsObject.changeXKills(1);
-        atkPageObject[id + "_bar_percent"] = 100;
+        //atkPageObject[id + "_bar_percent"] = 100;
+        atkPageObject.allXs[id].barPercent = 100;
         atkPageObject.statsObject
             .changeMoneyAndXKills(atkPageObject.oObject.xValue, 1);
     } 
     else
     {
-        var newPercent = atkPageObject[id + "_bar_percent"] - atkPageObject.oObject.atkDamage;
-        atkPageObject[id + "_bar_percent"] = newPercent;
+        //var newPercent = atkPageObject[id + "_bar_percent"] - atkPageObject.oObject.atkDamage;
+        var newPercent = atkPageObject.allXs[id].barPercent - atkPageObject.oObject.atkDamage;
+        //atkPageObject[id + "_bar_percent"] = newPercent;
+        atkPageObject.allXs[id].barPercent = newPercent;
+
         document.getElementById(id + "Bar")
         .style = "width:" + newPercent + "%";
         

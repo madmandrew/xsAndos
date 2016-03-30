@@ -43,11 +43,13 @@
                         </div>
 
                         <div class="enemyHealth">
-                            <div class="enemyInnerHealth"></div>
+                            <div class="enemyInnerHealth" id="secondXBar">
+                                <span class="enemyInnerHealthText" id="secondXBarText">100%</span>
+                            </div>
                         </div>
 
                         <div class="atkButtonContainer">
-                            <button type="button" class="atkButton" disabled>Atk</button>
+                            <button type="button" class="atkButton" id="secondXButton">Atk</button>
                         </div>
                     </div>
 
@@ -57,11 +59,13 @@
                         </div>
 
                         <div class="enemyHealth">
-                            <div class="enemyInnerHealth"></div>
+                            <div class="enemyInnerHealth" id="thirdXBar">
+                                <span class="enemyInnerHealthText" id="thirdXBarText">100%</span>
+                            </div>
                         </div>
 
                         <div class="atkButtonContainer">
-                            <button type="button" class="atkButton" disabled>Atk</button>
+                            <button type="button" class="atkButton" id="thirdXButton">Atk</button>
                         </div>
                     </div>
                     
@@ -71,11 +75,13 @@
                         </div>
 
                         <div class="enemyHealth">
-                            <div class="enemyInnerHealth"></div>
+                            <div class="enemyInnerHealth" id="fourthXBar">
+                                <span class="enemyInnerHealthText" id="fourthXBarText">100%</span>
+                            </div>
                         </div>
 
                         <div class="atkButtonContainer">
-                            <button type="button" class="atkButton" disabled>Atk</button>
+                            <button type="button" class="atkButton" id="fourthXButton">Atk</button>
                         </div>
                     </div>
                     
@@ -85,11 +91,13 @@
                         </div>
 
                         <div class="enemyHealth">
-                            <div class="enemyInnerHealth"></div>
+                            <div class="enemyInnerHealth" id="fifthXBar">
+                                <span class="enemyInnerHealthText" id="fifthXBarText">100%</span>
+                            </div>
                         </div>
 
                         <div class="atkButtonContainer">
-                            <button type="button" class="atkButton" disabled>Atk</button>
+                            <button type="button" class="atkButton" id="fifthXButton">Atk</button>
                         </div>
                     </div>
                 </div>
@@ -146,15 +154,34 @@
                     </canvas>
                     
                     <div class="leftColumn">
-                        <button type="button" class="oButtons" id="buyCrown">buy Crown</button>
-                        <button type="button" class="oButtons" id="buyMustache">buy Mustache</button>
-                        <button type="button" class="oButtons" id="buyPet">buy Pet</button>
+                        <button type="button" class="oButtons" id="buyCrown">
+                            <span style="float : left">Buy Crown</span>
+                            <span style="float : right">$1000</span>
+                        </button>
+
+                        <button type="button" class="oButtons" id="buyMustache">
+                            <span style="float : left">Buy Mustache</span>
+                            <span style="float : right">$100000</span>
+                        </button>
+                        <button type="button" class="oButtons" id="buyPet">
+                            <span style="float : left">Buy Pet</span>
+                            <span style="float : right">$500000</span>
+                        </button>
                         
                     </div>
                     <div class="rightColumn">
-                        <button type="button" class="oButtons" id="buySword">buy Sword</button>
-                        <button type="button" class="oButtons" id="buyShield">buy Shield</button>
-                        <button type="button" class="oButtons" id="buyPetAccessory" disabled>buy Pet Accessory</button>
+                        <button type="button" class="oButtons" id="buySword">
+                            <span style="float : left">Buy Sword</span>
+                            <span style="float : right">$10000</span>
+                        </button>
+                        <button type="button" class="oButtons" id="buyShield">
+                            <span style="float : left">Buy Shield</span>
+                            <span style="float : right">$250000</span>
+                        </button>
+                        <button type="button" class="oButtons" id="buyPetAccessory" disabled>
+                            <span style="float : left">Buy Pet Accessory</span>
+                            <span style="float : right">$1M</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -185,13 +212,13 @@
                 
                 var atkPage = new AtkPageObject(statsObject, oObject);
                 
-                var oPage = new oPageObject();
+                var oPage = new oPageObject(statsObject);
                 upgPage = new UpgradePageObject(statsObject, oObject, atkPage);
                 
                 statsObject.addSubscriber(oPage);
                 statsObject.addSubscriber(upgPage);
                 
-                document.getElementById("upgTab").click();
+                document.getElementById("oTab").click();
             });
             
         </script>
