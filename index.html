@@ -1,3 +1,5 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 <html>
 
     <head>
@@ -23,7 +25,7 @@
                 <div id="atkPage" style="display:none">
                     <div id="firstX" class="commonRow">
                         <div class="attackLabel">
-                            <span class="attackInnerLabel">x-1</span>
+                            <span class="attackInnerLabel" id="firstXasciimation">XvsO</span>
                         </div>
 
                         <div class="enemyHealth">
@@ -37,9 +39,9 @@
                         </div>
                     </div>
 
-                    <div id="secondX" class="commonRow" style="display: none">
+                    <div id="secondX" class="commonRow" style="display: block">
                         <div class="attackLabel">
-                            <span class="attackInnerLabel">x-2</span>
+                            <span class="attackInnerLabel" id="secondXasciimation">XvsO</span>
                         </div>
 
                         <div class="enemyHealth">
@@ -55,7 +57,7 @@
 
                     <div id="thirdX" class="commonRow" style="display: none">
                         <div class="attackLabel">
-                            <span class="attackInnerLabel">x-3</span>
+                            <span class="attackInnerLabel" id="thirdXasciimation">XvsO</span>
                         </div>
 
                         <div class="enemyHealth">
@@ -71,7 +73,7 @@
                     
                     <div id="fourthX" class="commonRow" style="display: none">
                         <div class="attackLabel">
-                            <span class="attackInnerLabel">x-4</span>
+                            <span class="attackInnerLabel" id="fourthXasciimation">XvsO</span>
                         </div>
 
                         <div class="enemyHealth">
@@ -87,7 +89,7 @@
                     
                     <div id="fifthX" class="commonRow" style="display: none">
                         <div class="attackLabel">
-                            <span class="attackInnerLabel">x-5</span>
+                            <span class="attackInnerLabel" id="fifthXasciimation">XvsO</span>
                         </div>
 
                         <div class="enemyHealth">
@@ -218,7 +220,7 @@
                 statsObject.addSubscriber(oPage);
                 statsObject.addSubscriber(upgPage);
                 
-                document.getElementById("oTab").click();
+                document.getElementById("atkTab").click();
             });
             
         </script>

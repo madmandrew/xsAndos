@@ -8,26 +8,35 @@ function AtkPageObject(statsObject, oObject)
             "set" : true,
             "running": false,
             "loop" : null,
+            "asciimationLoop" : null,
             "barPercent" : 100
         },
         "secondX" : {
             "set" : false,
+            "running": false,
             "loop" : null,
+            "asciimationLoop" : null,
             "barPercent" : 100
         },
         "thirdX" : {
             "set" : false,
+            "running": false,
             "loop" : null,
+            "asciimationLoop" : null,
             "barPercent" : 100
         },
         "fourthX" : {
             "set" : false,
+            "running": false,
             "loop" : null,
+            "asciimationLoop" : null,
             "barPercent" : 100
         },
         "fifthX" : {
             "set" : false,
+            "running": false,
             "loop" : null,
+            "asciimationLoop" : null,
             "barPercent" : 100
         }
     }
@@ -39,11 +48,9 @@ function AtkPageObject(statsObject, oObject)
     
     this.speedUpgraded = function ()
     {
-        //console.log("speed has been upgraded, reset intervals");
-        //console.log(1000 / oObject.atkSpeed);
         for (var id in this.allXs)
         {
-            if (this.allXs[id].set)
+            if (this.allXs[id].set && this.allXs[id].running)
             {
                 clearInterval(this.allXs[id].loop);
                 atkInterval(this, id);
@@ -51,7 +58,99 @@ function AtkPageObject(statsObject, oObject)
         }
     }
     
+    this.asciimationLoop1 = function (id)
+    {
+           asciimationLoop1(this, id);
+    }
+    this.asciimationLoop2 = function (id)
+    {
+           asciimationLoop2(this, id);
+    }
+    this.clearAsciimation = function (id)
+    {
+        clearInterval(this.allXs[id].asciimationLoop);  
+        document.getElementById(id + "asciimation").innerHTML = "XvsO";
+    }
     createAtkListeners(this);
+    //asciiMationLoop("firstX");
+    //asciiMationLoop2("secondX");
+    //asciiMationLoop2();
+}
+
+function asciimationLoop1 (atkPageObject, id)
+{
+    var i = 0;
+    atkPageObject.allXs[id].asciimationLoop = setInterval(function()
+    {
+        if (i == 0)
+        {
+            document.getElementById(id + "asciimation").innerHTML = "X |O";
+            i++;
+        }
+        else if(i == 1)
+        {
+           document.getElementById(id + "asciimation").innerHTML = "X \\O";
+            i++;
+        }
+        else if (i == 2)
+        {
+            document.getElementById(id + "asciimation").innerHTML = "X--O";
+            i++;
+        }
+        else if (i == 3)
+        {
+            document.getElementById(id + "asciimation").innerHTML = "x--O";
+            i++;
+        }
+        else if (i == 4)
+        {
+            document.getElementById(id + "asciimation").innerHTML = "X--O";
+            i++;
+        }  
+        else if (i == 5)
+        {
+            document.getElementById(id + "asciimation").innerHTML = "X \\O";
+            i=0;
+        }
+    }, 500);
+}
+
+function asciimationLoop2 (atkPageObject, id)
+{
+    var i = 0;
+    atkPageObject.allXs[id].asciimationLoop = setInterval(function()
+    {
+        if (i == 0)
+        {
+            document.getElementById(id + "asciimation").innerHTML = "X  {O";
+            i++;
+        }
+        else if(i == 1)
+        {
+           document.getElementById(id + "asciimation").innerHTML = "X {-O";
+            i++;
+        }
+        else if (i == 2)
+        {
+            document.getElementById(id + "asciimation").innerHTML = "X  -{O";
+            i++;
+        }
+        else if (i == 3)
+        {
+            document.getElementById(id + "asciimation").innerHTML = "X-  {O";
+            i++;
+        }
+        else if (i == 4)
+        {
+            document.getElementById(id + "asciimation").innerHTML = "x  {O";
+            i++;
+        }  
+        else if (i == 5)
+        {
+            document.getElementById(id + "asciimation").innerHTML = "X  {O";
+            i=0;
+        }
+    }, 500);
 }
 
 function createAtkListeners(atkPageObject)
@@ -64,6 +163,15 @@ function createAtkListeners(atkPageObject)
                .addEventListener("click", function ()
             {
                 document.getElementById(xId1 + "Button").disabled = true;
+                atkPageObject.allXs[xId1].running = true;
+                if (xId1 == "firstX" || xId1 == "thirdX" || xId1 == "fifthX")
+                {
+                    atkPageObject.asciimationLoop1(xId1);
+                }
+                else
+                {
+                    atkPageObject.asciimationLoop2(xId1);
+                }
 
                 atkPageObject.allXs[xId1].barPercent = 100;
 
@@ -105,6 +213,8 @@ function attackLoop(atkPageObject, id)
         {  
             clearInterval(atkPageObject.allXs[id].loop);
             document.getElementById(id + "Button").disabled = false;
+            atkPageObject.allXs[id].running = false;
+            atkPageObject.clearAsciimation(id);
         }
         else
         {
