@@ -38,7 +38,7 @@ function LocalStorageObject(atkPage, upgPage, oPage, statsObject, oObject)
     this.loadStorage = function ()
     {
         console.log("loading data");
-        if(localStorage.gameData != "null")
+        if(localStorage.gameData != "null" && localStorage.gameData != undefined)
         {
             this.gameData = JSON.parse(localStorage.gameData);
 
