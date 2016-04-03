@@ -90,4 +90,9 @@ function LocalStorageObject(atkPage, upgPage, oPage, statsObject, oObject)
     {
         console.log("testing");
     }
+
+    document.getElementById("clearStats").addEventListener("click", function ()
+    {
+       devMode.clearStats();
+    });
 }

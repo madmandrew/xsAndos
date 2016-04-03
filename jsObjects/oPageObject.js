@@ -230,7 +230,7 @@ function drawLightsaber()
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 40,35, 80, 80);
     }
-    img.src = "img/lightsaberSmall.png";
+    img.src = "img/lightsaber.png";
 }
 
 function drawShield()
@@ -256,7 +256,7 @@ function drawPet()
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 20,90, 45, 45);
     }
-    img.src = "img/pet.gif";
+    img.src = "img/pet.png";
 }
 
 function drawPetSunglasses()
@@ -268,5 +268,5 @@ function drawPetSunglasses()
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 34,102, 23.5, 5);
     }
-    img.src = "img/sunglasses2.png";
+    img.src = "img/sunglasses.png";
 }
