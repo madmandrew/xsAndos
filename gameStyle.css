@@ -177,7 +177,11 @@
     position: relative;
     line-height: 32px;
     border-radius: 2px;
-    font-size: 0.4em;
+    font-size: 0.7em;
+    border: 0px;
+    overflow: hidden;
+    background-color: #3F51B5;
+    color: #FFFFFF;
 }
 
 .button.raised {
@@ -189,13 +193,6 @@
 .button.raised:active {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
     transition-delay: 0s;
-}
-
-.button {
-    border: 0px;
-    overflow: hidden;
-    background-color: #3F51B5;
-    color: #FFFFFF;
 }
 
 .atkButton {
