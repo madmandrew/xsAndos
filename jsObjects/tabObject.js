@@ -20,7 +20,14 @@ function changeTab(tabId, tabObject)
     document.getElementById(tabObject.tab2_content).style = "display: none";
     document.getElementById(tabObject.tab3_content).style = "display: none";
 
+    document.getElementById(tabObject.tab1).className = "tab3";
+    document.getElementById(tabObject.tab2).className = "tab3";
+    document.getElementById(tabObject.tab3).className = "tab3";
+
     document.getElementById(tabId.replace("Tab", "Page")).style = "display: block";
+    document.getElementById(tabId).className = "tab3 activeTab";
+
+
 }
 
 function createTabListeners(tabObject)
