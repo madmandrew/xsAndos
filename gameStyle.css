@@ -1,8 +1,8 @@
 .gameBox {
     border-style: solid;
     border-color: #303F9F;
-    height: 500px; /*TODO make this dynamic*/
-    width: 400px;
+    height: 500px;
+    width: calc(100% - 6px);
 }
 
 .gameContent {
@@ -167,6 +167,22 @@
     font-size: 110%;
     font-weight: bold;
 }
+
+body {
+    margin: 0px;
+}
+
+@media only screen and (min-width: 406px)
+{
+    .gameBox {
+        width: 400px;
+        height: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+}
+
 
 
 

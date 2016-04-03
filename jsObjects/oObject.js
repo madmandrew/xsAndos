@@ -5,14 +5,14 @@ function O_Object()
     this.atkDamage = 1;
     this.xValue = 1;
     
-    this.clothing = {
+    /*this.clothing = {
         "crown" : false,
         "mustache" : false,
         "sword" : false,
         "shield" : false,
         "pet" : false,
         "petAccessory" : false
-    };
+    };*/
     
     this.increaseAttackDamage = function (addAttackDamage)
     {
@@ -26,8 +26,8 @@ function O_Object()
     {
         this.xValue += addXValue;
     }
-    this.addClothing = function (clothingName)
+    /*this.addClothing = function (clothingName)
     {
         this.clothing[clothingName] = true;   
-    }
+    }*/
 }

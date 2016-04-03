@@ -41,6 +41,22 @@ function AtkPageObject(statsObject, oObject)
         }
     }
 
+    this.loadStorage = function(loadXs)
+    {
+        var xToAdd = 0;
+        for (var xId in loadXs)
+        {
+            if (loadXs[xId].set)
+            {
+                xToAdd++;
+            }
+        }
+        for (var i = 1; i < xToAdd; i++)
+        {
+            this.addX();
+        }
+    }
+
     this.addX = function ()
     {
         addX(this);

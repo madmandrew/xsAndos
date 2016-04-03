@@ -10,6 +10,7 @@
         <script src="jsObjects/statsObject.js"></script>
         <script src="jsObjects/oObject.js"></script>
         <script src="jsObjects/upgPageObject.js"></script>
+        <script src="jsObjects/localStorageObject.js"></script>
 
     </head>
     <body>
@@ -39,7 +40,7 @@
                         </div>
                     </div>
 
-                    <div id="secondX" class="commonRow" style="display: block">
+                    <div id="secondX" class="commonRow" style="display: none">
                         <div class="attackLabel">
                             <span class="attackInnerLabel" id="secondXasciimation">XvsO</span>
                         </div>
@@ -108,7 +109,7 @@
                     <div class="commonRow">
                             <button class="upgButton" id="atkPowerButton" disabled>
                                 <span class="upgButtonLabel">Attack Power</span>
-                                <span class="upgButtonLevel"></span>
+                                <span class="upgButtonLevel">lvl: 0</span>
                                 <span class="upgButtonCost">
                                     5 x-kills and $5
                                 </span>
@@ -117,7 +118,7 @@
                     <div class="commonRow">
                             <button class="upgButton" id="atkSpeedButton" disabled>
                                 <span class="upgButtonLabel">Attack Speed</span>
-                                <span class="upgButtonLevel"></span>
+                                <span class="upgButtonLevel">lvl: 0</span>
                                 <span class="upgButtonCost">
                                     10 x-kills and $10
                                 </span>
@@ -126,7 +127,7 @@
                     <div class="commonRow">
                             <button class="upgButton" id="xKillValueButton" disabled>
                                 <span class="upgButtonLabel">x-kill $-value</span>
-                                <span class="upgButtonLevel"></span>
+                                <span class="upgButtonLevel">lvl: 0</span>
                                 <span class="upgButtonCost">
                                     15 x-kills and $15
                                 </span>
@@ -143,7 +144,7 @@
                     <div class="commonRow">
                             <button class="upgButton" id="newOButton" disabled>
                                 <span class="upgButtonLabel">Add New O</span>
-                                <span class="upgButtonLevel"></span>
+                                <span class="upgButtonLevel">lvl: 0</span>
                                 <span class="upgButtonCost">
                                     100 x-kills and $500
                                 </span>
@@ -198,10 +199,16 @@
             </div>
         </div>
 
+
         <script type="text/javascript">
+
+            //temp need to move down later
             var statsObject;
             var oObject;
-            var upgPage;
+            //var upgPage;
+
+            var devMode;
+
             document.addEventListener("DOMContentLoaded", function(event)
             {
                 new TabObject("atkTab","upgTab","oTab");
@@ -215,11 +222,19 @@
                 var atkPage = new AtkPageObject(statsObject, oObject);
                 
                 var oPage = new oPageObject(statsObject);
-                upgPage = new UpgradePageObject(statsObject, oObject, atkPage);
-                
+                var upgPage = new UpgradePageObject(statsObject, oObject, atkPage);
+
+
+                var localStorage = new LocalStorageObject(atkPage, upgPage, oPage, statsObject, oObject);
+                devMode = localStorage;
+
                 statsObject.addSubscriber(oPage);
                 statsObject.addSubscriber(upgPage);
-                
+                statsObject.addSubscriber(localStorage);
+
+                localStorage.loadStorage();
+
+                //default tab to open
                 document.getElementById("atkTab").click();
             });
             

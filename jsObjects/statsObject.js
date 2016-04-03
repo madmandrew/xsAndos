@@ -27,19 +27,26 @@ function StatsObject ()
         this.updateStats();
     }
     
-    this.updateStats = function ()
+    this.updateStats = function (saveData)
     {
-        updateStats(this);
+        if (typeof(saveData) == "boolean")
+        {
+            updateStats(this, saveData);
+        }
+        else
+        {
+            updateStats(this, true);
+        }
     }
     this.addSubscriber = function (newSubscriber)
     {
         this.subscribers.push(newSubscriber);
     }
     
-    this.updateStats();
+    this.updateStats(false);
 }
 
-function updateStats(statsObject)
+function updateStats(statsObject, saveData)
 {
     document.getElementById(statsObject.moneyId)
             .innerHTML = "$ " + statsObject.money;
@@ -48,7 +55,7 @@ function updateStats(statsObject)
     
     for (var i = 0; i < statsObject.subscribers.length; i++)
     {
-        statsObject.subscribers[i].statsUpdated();
+        statsObject.subscribers[i].statsUpdated(saveData);
     }
 }
 

@@ -14,6 +14,61 @@ function oPageObject(statsObject)
         updateOButtons(this, statsObject);
     }
 
+    this.loadStorage = function (loadPurchased)
+    {
+        for (var item in this.purchased)
+        {
+            if (item == "crown")
+            {
+                if (loadPurchased[item])
+                {
+                    this.purchased[item] = true;
+                    drawCrown();
+                }
+            }
+            else if (item == "sword")
+            {
+                if (loadPurchased[item])
+                {
+                    this.purchased[item] = true;
+                    drawLightsaber();
+                }
+            }
+            else if (item == "mustache")
+            {
+                if (loadPurchased[item])
+                {
+                    this.purchased[item] = true;
+                    drawMustache()
+                }
+            }
+            else if (item == "shield")
+            {
+                if (loadPurchased[item])
+                {
+                    this.purchased[item] = true;
+                    drawShield();
+                }
+            }
+            else if (item == "pet")
+            {
+                if (loadPurchased[item])
+                {
+                    this.purchased[item] = true;
+                    drawPet();
+                }
+            }
+            else if (item == "petAccessory")
+            {
+                if (loadPurchased[item])
+                {
+                    this.purchased[item] = true;
+                    drawPetSunglasses();
+                }
+            }
+        }
+    }
+
     createOListeners(this, statsObject);
     initializeO();
     this.statsUpdated();

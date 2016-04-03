@@ -37,6 +37,46 @@ function UpgradePageObject(statsObject, oObject, atkPage)
     { 
         statsUpdated(this);
     }
+
+    this.loadStorage = function(loadUpgrades)
+    {
+        for (var upg in loadUpgrades)
+        {
+            if (upg != "autoAttack" && upg != "newO")
+            {
+                updateButtonLabel(upg + "Button", loadUpgrades[upg])
+            }
+            else if (upg == "autoAttack")
+            {
+                if (loadUpgrades[upg].bought)
+                {
+                    document.getElementById("autoAttackButton").children[1]
+                            .innerHTML = "MAX";
+                    document.getElementById("autoAttackButton").disabled = true;
+                    //oObject.autoAttack = true;
+                }
+            }
+            else
+            {
+                if (loadUpgrades[upg].level == "max")
+                {
+                    document.getElementById("newOButton").children[1]
+                            .innerHTML = "";
+                    //cost
+                    document.getElementById("newOButton").children[2]
+                            .innerHTML = "MAX";
+                    //disable
+                    document.getElementById("newOButton").disabled = true;
+                }
+                else
+                {
+                    updateButtonLabel(upg + "Button", loadUpgrades[upg])
+
+                }
+            }
+        }
+        this.statsUpdated();
+    }
     
     createUpgListeners(this, atkPage);
     
@@ -95,7 +135,7 @@ function createUpgListeners(upgObject, atkPage)
             upg.moneyCost = upg.moneyCost * 2;
             upg.xCost = upg.xCost * 2;
             
-            updateButtonLabel("atkPowerButton", upg, upgObject);
+            updateButtonLabel("atkPowerButton", upg);
             
         }
         else
