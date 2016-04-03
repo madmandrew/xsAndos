@@ -89,6 +89,7 @@
     line-height: 36px;
     color: #303F9F;
     font-weight: bold;
+    font-size: .7em;
 }
 
 .commonRow
@@ -231,6 +232,10 @@ body {
     }
 
     .tab3 {
+        font-size: 1em;
+    }
+
+    .attackInnerLabel {
         font-size: 1em;
     }
 }
