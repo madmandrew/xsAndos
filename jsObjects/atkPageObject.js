@@ -73,6 +73,51 @@ function AtkPageObject(statsObject, oObject)
             }
         }
     }
+
+    this.tapAttackListeners = function ()
+    {
+        var atkPage = this;
+        document.getElementById("firstXTap").addEventListener("click", function ()
+        {
+            if (atkPage.allXs.firstX.running)
+            {
+                atkPage.allXs.firstX.barPercent -= 1;
+                attack("firstX", atkPage.allXs.firstX.barPercent);
+            }
+        });
+        document.getElementById("secondXTap").addEventListener("click", function ()
+        {
+            if (atkPage.allXs.secondX.running)
+            {
+                atkPage.allXs.secondX.barPercent -= 1;
+                attack("secondX", atkPage.allXs.secondX.barPercent);
+            }
+        });
+        document.getElementById("thirdXTap").addEventListener("click", function ()
+        {
+            if (atkPage.allXs.thirdX.running)
+            {
+                atkPage.allXs.thirdX.barPercent -= 1;
+                attack("thirdX", atkPage.allXs.thirdX.barPercent);
+            }
+        });
+        document.getElementById("fourthXTap").addEventListener("click", function ()
+        {
+            if (atkPage.allXs.fourthX.running)
+            {
+                atkPage.allXs.fourthX.barPercent -= 1;
+                attack("fourthX", atkPage.allXs.fourthX.barPercent);
+            }
+        });
+        document.getElementById("fifthXTap").addEventListener("click", function ()
+        {
+            if (atkPage.allXs.fifthX.running)
+            {
+                atkPage.allXs.fifthX.barPercent -= 1;
+                attack("fifthX", atkPage.allXs.fifthX.barPercent);
+            }
+        });
+    }
     
     this.asciimationLoop1 = function (id)
     {
@@ -87,10 +132,9 @@ function AtkPageObject(statsObject, oObject)
         clearInterval(this.allXs[id].asciimationLoop);  
         document.getElementById(id + "asciimation").innerHTML = "XvsO";
     }
+
     createAtkListeners(this);
-    //asciiMationLoop("firstX");
-    //asciiMationLoop2("secondX");
-    //asciiMationLoop2();
+    this.tapAttackListeners();
 }
 
 function asciimationLoop1 (atkPageObject, id)
@@ -218,6 +262,22 @@ function addX(atkPageObject)
             atkPageObject.allXs[xId].set = true;
             break;
         }
+    }
+}
+
+function attack(id, newPercent)
+{
+    document.getElementById(id + "Bar")
+            .style = "width:" + newPercent + "%";
+
+    //this is to account for the text overflowing container
+    if (newPercent <= 15)
+    {
+        document.getElementById(id + "BarText").innerHTML = "";
+    }
+    else
+    {
+        document.getElementById(id + "BarText").innerHTML = newPercent + "%";
     }
 }
 
