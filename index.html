@@ -218,17 +218,28 @@
         var upgPage = new UpgradePageObject(statsObject, oObject, atkPage);
 
 
-        var localStorage = new LocalStorageObject(atkPage, upgPage, oPage, statsObject, oObject);
-        devMode = localStorage;
+        var localStorageObject = new LocalStorageObject(atkPage, upgPage, oPage, statsObject, oObject);
+        devMode = localStorageObject;
 
         statsObject.addSubscriber(oPage);
         statsObject.addSubscriber(upgPage);
-        statsObject.addSubscriber(localStorage);
+        statsObject.addSubscriber(localStorageObject);
 
-        localStorage.loadStorage();
+        localStorageObject.loadStorage();
 
         //default tab to open
         document.getElementById("atkTab").click();
+
+        if (localStorage.firstTimeVisit != "false")
+        {
+            alert("I see this is your first time. So let me explain...\n" +
+                    "xsAndos is a game where you control the O's to destroy the X's \n" +
+                    "You can help your O's by tapping on the X's health bar \n" +
+                    "You can upgrade your O's and recruit more O's in the upgrade page\n" +
+                    "You can also pimp out your O in the O's page\n" +
+                    "Good luck!");
+            localStorage.setItem("firstTimeVisit", "false");
+        }
     });
 
 </script>
