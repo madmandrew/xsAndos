@@ -1,7 +1,7 @@
 function StatsObject ()
 {
-    this.money = 5000000;
-    this.xKills = 1000000;
+    this.money = 5;
+    this.xKills = 0;
     
     this.moneyId = "money";
     this.xKillsId = "xKills";

@@ -4,12 +4,12 @@
 function LocalStorageObject(atkPage, upgPage, oPage, statsObject, oObject)
 {
     this.gameData = {
-        "atkPage" : null,
-        "upgPage" : null,
-        "oPage" :null,
-        "oObject" : null,
-        "money" : 0,
-        "xKills" : 0
+        "atkPage": null,
+        "upgPage": null,
+        "oPage": null,
+        "oObject": null,
+        "money": 0,
+        "xKills": 0
     }
 
     this.statsUpdated = function (saveData)
@@ -38,7 +38,7 @@ function LocalStorageObject(atkPage, upgPage, oPage, statsObject, oObject)
     this.loadStorage = function ()
     {
         console.log("loading data");
-        if(localStorage.gameData != "null" && localStorage.gameData != undefined)
+        if (localStorage.gameData != "null" && localStorage.gameData != undefined)
         {
             this.gameData = JSON.parse(localStorage.gameData);
 
@@ -46,27 +46,27 @@ function LocalStorageObject(atkPage, upgPage, oPage, statsObject, oObject)
             {
                 atkPage.loadStorage(this.gameData.atkPage);
             }
-            if ( this.gameData.upgPage != null)
+            if (this.gameData.upgPage != null)
             {
                 upgPage.upgrades = this.gameData.upgPage;
                 upgPage.loadStorage(this.gameData.upgPage);
             }
-            if ( this.gameData.oPage != null)
+            if (this.gameData.oPage != null)
             {
                 oPage.loadStorage(this.gameData.oPage);
             }
-            if ( this.gameData.oObject != null)
+            if (this.gameData.oObject != null)
             {
                 oObject.autoAttack = this.gameData.oObject.autoAttack;
                 oObject.atkSpeed = this.gameData.oObject.atkSpeed;
                 oObject.atkDamage = this.gameData.oObject.atkDamage;
                 oObject.xValue = this.gameData.oObject.xValue;
             }
-            if ( this.gameData.money != null)
+            if (this.gameData.money != null)
             {
                 statsObject.money = this.gameData.money;
             }
-            if ( this.gameData.xKills != null)
+            if (this.gameData.xKills != null)
             {
                 statsObject.xKills = this.gameData.xKills;
             }
@@ -88,11 +88,18 @@ function LocalStorageObject(atkPage, upgPage, oPage, statsObject, oObject)
 
     this.loadTestMode = function ()
     {
-        console.log("testing");
+        console.log("testing dev Mode");
+        statsObject.money = 10000000;
+        statsObject.xKills = 10000000;
+        statsObject.updateStats(true);
     }
 
     document.getElementById("clearStats").addEventListener("click", function ()
     {
-       devMode.clearStats();
+        devMode.clearStats();
+    });
+    document.getElementById("devMode").addEventListener("click", function ()
+    {
+        devMode.loadTestMode();
     });
 }
