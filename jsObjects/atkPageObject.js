@@ -258,7 +258,7 @@ function addX(atkPageObject)
     {
         if(!atkPageObject.allXs[xId].set)
         {
-            document.getElementById(xId).style = "display: block";
+            document.getElementById(xId).style.display = "block";
             atkPageObject.allXs[xId].set = true;
             break;
         }
@@ -268,7 +268,7 @@ function addX(atkPageObject)
 function attack(id, newPercent)
 {
     document.getElementById(id + "Bar")
-            .style = "width:" + newPercent + "%";
+            .style.width = newPercent + "%";
 
     //this is to account for the text overflowing container
     if (newPercent <= 15)
@@ -296,7 +296,7 @@ function attackLoop(atkPageObject, id)
         {
            //handle atkSpeed change here    
         }
-        document.getElementById(id + "Bar").style = "width:100%";
+        document.getElementById(id + "Bar").style.width = "100%";
         document.getElementById(id + "BarText").innerHTML = "100%";
         
         
@@ -315,7 +315,7 @@ function attackLoop(atkPageObject, id)
         atkPageObject.allXs[id].barPercent = newPercent;
 
         document.getElementById(id + "Bar")
-        .style = "width:" + newPercent + "%";
+        .style.width = newPercent + "%";
         
         //this is to account for the text overflowing container
         if (newPercent <= 10)
